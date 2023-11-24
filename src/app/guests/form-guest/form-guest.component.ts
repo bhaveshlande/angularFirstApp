@@ -7,7 +7,12 @@ import { Guest } from '../guest.model';
 @Component({
   selector: 'app-form-guest',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormGuestComponent,
+  ],
   templateUrl: './form-guest.component.html',
   styleUrls: ['./form-guest.component.css'],
 })
@@ -17,7 +22,8 @@ export class FormGuestComponent {
   @Input()
   model!: Guest;
 
-  @Output() OnGuestEvent: EventEmitter<Guest> = new EventEmitter<Guest>();
+  @Output()
+  onGuestEvent: EventEmitter<Guest>;
 
   constructor(private formBuilder: FormBuilder) {
     this.frmGrp = this.formBuilder.group({
@@ -25,7 +31,7 @@ export class FormGuestComponent {
       name: '',
       contactNo: '',
     });
-    // this.onGuestEvent = new EventEmitter<Guest>();
+    this.onGuestEvent = new EventEmitter<Guest>();
   }
 
   ngOnInit() {
@@ -33,8 +39,11 @@ export class FormGuestComponent {
       this.frmGrp.patchValue(this.model);
     }
   }
-
-  saveChanges(guest: Guest) {
-    this.OnGuestEvent.emit(this.frmGrp.value);
+  saveChanges(event: Event) {
+    event.preventDefault();
+    this.onGuestEvent.emit(this.frmGrp.value);
   }
+  // saveChanges(guest: Guest) {
+  //   this.onGuestEvent.emit(this.frmGrp.value);
+  // }
 }

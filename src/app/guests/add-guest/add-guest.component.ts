@@ -10,10 +10,11 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormGuestComponent],
   templateUrl: './add-guest.component.html',
-  styleUrl: './add-guest.component.css',
+  styleUrls: ['./add-guest.component.css'],
 })
 export class AddGuestComponent {
   constructor(private guestService: GuestService, private router: Router) {}
+
   saveChanges(guestToBeAdded: Guest) {
     this.guestService.addGuest(guestToBeAdded).subscribe(
       () => {

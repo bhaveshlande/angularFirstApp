@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'guests', component: ListGuestComponent },
   { path: 'guests/create', component: AddGuestComponent },
   { path: 'guests/edit/:id', component: EditGuestComponent },
+
   { path: '**', redirectTo: '' },
 ];
 
