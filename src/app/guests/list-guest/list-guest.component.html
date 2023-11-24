@@ -1,0 +1,17 @@
+<p>
+  <a href="#" routerLink="/">Home</a>
+</p>
+<h2>Guest List</h2>
+
+<ng-container *ngIf="guests && guests.length > 0; else noGuests">
+  <table border="1"></table>
+</ng-container>
+<ng-container *ngIf="guests && guests.length === 0; else noGuests">
+  <h3>No guest record found</h3>
+</ng-container>
+
+<ng-template #noGuests>
+  <h3>Loading guests...</h3>
+</ng-template>
+
+<button routerLink="/guests/create">add Guest</button>

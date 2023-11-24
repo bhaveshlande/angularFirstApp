@@ -1,0 +1,30 @@
+<form [formGroup]="frmGrp">
+  <div>
+    <label>Guest Id</label>
+    <br />
+    <input
+      type="text"
+      placeholder="Enter Guest id"
+      readonly
+      formControlName="id"
+    />
+  </div>
+  <div>
+    <label>Guest Name</label>
+    <br />
+    <input type="text" placeholder="Enter Guest Name" formControlName="name" />
+  </div>
+  <div>
+    <label>Guest Contact Number</label>
+    <br />
+
+    <input
+      type="text"
+      placeholder="Enter Guest Contact Number"
+      formControlName="contactNo"
+    />
+  </div>
+  <hr />
+  <button onclick="saveChanges()">Save</button>
+  <button routerLink="/guests">Cancel</button>
+</form>

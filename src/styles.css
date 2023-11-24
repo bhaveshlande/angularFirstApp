@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+.center-title {
+  text-align: center; /* Center the text horizontally */
+  line-height: 50px; /* Adjust the line height to vertically center the text */
+  height: 100px; /* Set a fixed height to vertically center the text */
+  font-size: x-large;  /* changing size of title */
+}
