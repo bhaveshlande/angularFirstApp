@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { Guest } from '../guest.model';
 
 @Component({
@@ -17,16 +17,15 @@ export class FormGuestComponent {
   @Input()
   model!: Guest;
 
-  @Output()
-  onGuestEvent: EventEmitter<Guest>;
+  @Output() OnGuestEvent: EventEmitter<Guest> = new EventEmitter<Guest>();
 
   constructor(private formBuilder: FormBuilder) {
     this.frmGrp = this.formBuilder.group({
-      id: Math.random(), // Consider a more robust approach for generating IDs
+      id: Math.random(),
       name: '',
       contactNo: '',
     });
-    this.onGuestEvent = new EventEmitter<Guest>();
+    // this.onGuestEvent = new EventEmitter<Guest>();
   }
 
   ngOnInit() {
@@ -35,7 +34,7 @@ export class FormGuestComponent {
     }
   }
 
-  saveChanges() {
-    this.onGuestEvent.emit(this.frmGrp.value);
+  saveChanges(guest: Guest) {
+    this.OnGuestEvent.emit(this.frmGrp.value);
   }
 }

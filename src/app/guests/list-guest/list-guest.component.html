@@ -3,15 +3,30 @@
 </p>
 <h2>Guest List</h2>
 
-<ng-container *ngIf="guests && guests.length > 0; else noGuests">
-  <table border="1"></table>
+<ng-container *ngIf="guests.length > 0">
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Contact Number</th>
+        <th colspan="2">
+          <button routerLink="/guests/create">add Guest</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let guest of guests">
+        <td>{{ guest.id }}</td>
+        <td>{{ guest.name }}</td>
+        <td>{{ guest.contactNo }}</td>
+        <td><button routerLink="/guests/edit/{{ guest.id }}">Edit</button></td>
+        <td><button (click)="deleteGuest(guest.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
 </ng-container>
-<ng-container *ngIf="guests && guests.length === 0; else noGuests">
+<ng-container *ngIf="guests.length === 0">
   <h3>No guest record found</h3>
+  <button routerLink="/guests/create">add Guest</button>
 </ng-container>
-
-<ng-template #noGuests>
-  <h3>Loading guests...</h3>
-</ng-template>
-
-<button routerLink="/guests/create">add Guest</button>

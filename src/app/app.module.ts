@@ -18,13 +18,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    ListGuestComponent,
-    AddGuestComponent,
-    EditGuestComponent,
-  ],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     CommonModule,
     HttpClientModule,
